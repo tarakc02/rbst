@@ -42,10 +42,6 @@ bst <- function() {
 
 #' @export
 print.bst <- function(tree) {
-    cat("tree of size", size(tree))
-}
-
-print.bst <- function(tree) {
     cat("tree of size", size(tree), '\n')
     if (!is_empty(tree)) print(tree$root)
 }
