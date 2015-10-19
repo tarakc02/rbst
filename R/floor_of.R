@@ -20,7 +20,7 @@ floor_of <- function(tree, key) UseMethod("floor_of")
 #' @import assertthat
 #' @export
 floor_of.bst <- function(tree, key) {
-    assertthat::assert_that(is.scalar(key))
+    assertthat::assert_that(is.scalar(key) & !is.na(key))
     if (is_empty(tree)) stop("Tree is empty")
     res = floor_of(tree$root, key)
     if (is.null(res)) return(NULL)
