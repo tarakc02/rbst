@@ -40,7 +40,7 @@ as.bst <- function(x) UseMethod("as.bst")
 as.bst.default <- function(x) {
     if (any(vapply(x, is.null, logical(1))))
         stop("Can't insert NULL values")
-    if (any(is.na(x))) stop("Keys can not be NA")
+    if (any(is.na(names(x)))) stop("Keys can not be NA")
     num_of_keys <- length(names(x))
     num_of_vals <- length(x)
     
