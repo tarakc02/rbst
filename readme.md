@@ -68,4 +68,4 @@ devtools::install_github("tarakc02/rbst")
 
 For the future
 --------------
-This project has a lot of room for improvement. For starters, I haven't written any unit tests yet, or done any performance testing. I'd also like to write a vignette. Also need to add `min` and `max` type functions to return the smallest or largest key. Beyond that, the underlying implementation should really be a balanced (red-black) search tree, which might  make it easier to include delete operations. If you have any ideas please let me know. 
+This project has a lot of room for improvement. For starters, the unit tests do not cover all types of inputs, so bug reports would be appreciated. I haven't yet done performance testing. I'd also like to write a vignette. Also need to add `min` and `max` type functions to return the smallest or largest key. Beyond that, the underlying implementation should really be a balanced (red-black) search tree, which might  make it easier to include delete operations. If you have any ideas please let me know. 
