@@ -19,8 +19,8 @@ retrieve <- function(tree, key) UseMethod("retrieve")
 #' @importFrom assertthat is.scalar
 #' @export
 retrieve.bst <- function(tree, key) {
-    assertthat::assert_that(is.scalar(key))
-    assertthat::assert_that(!is.na(key))
+    assert_that(is.scalar(key))
+    assert_that(!is.na(key))
     retrieve(tree$root, key)
 }
 

@@ -20,18 +20,18 @@ floor_of <- function(tree, key) UseMethod("floor_of")
 #' @importFrom assertthat is.scalar
 #' @export
 floor_of.bst <- function(tree, key) {
-    assertthat::assert_that(is.scalar(key) & !is.na(key))
+    assert_that(is.scalar(key) & !is.na(key))
     if (is_empty(tree)) stop("Tree is empty")
-    res = floor_of(tree$root, key)
+    res <- floor_of(tree$root, key)
     if (is.null(res)) return(NULL)
     else return(res$key)
 }
 
 floor_of.bstnode <- function(node, key) {
-    comp = compare(key, node$key)
+    comp <- compare(key, node$key)
     if (comp == 0) return(node)
     if (comp < 0) return(floor_of(node$left, key))
-    temp = floor_of(node$right, key)
+    temp <- floor_of(node$right, key)
     if (!is.null(temp)) return(temp)
     else return(node)
 }

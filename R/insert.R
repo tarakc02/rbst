@@ -27,9 +27,9 @@ insert <- function(tree, key, value) UseMethod("insert")
 #' @importFrom assertthat is.scalar
 #' @export
 insert.bst <- function(tree, key, value) {
-    assertthat::assert_that(is.scalar(key))
-    assertthat::assert_that(!is.null(value))
-    assertthat::assert_that(!is.na(key))
+    assert_that(is.scalar(key))
+    assert_that(!is.null(value))
+    assert_that(!is.na(key))
     newtree <- bst()
     newtree$root <- tree$root
     newtree$root <- insert(newtree$root, key, value)

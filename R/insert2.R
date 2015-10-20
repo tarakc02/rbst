@@ -18,7 +18,7 @@ insert2.bstnode <- function(node, key, value) {
 }
 
 insert2.NULL <- function(node, key, value) {
-    rbst:::bstnode(key, value, 1L)
+    bstnode(key, value, 1L)
 }
 
 #' Convert a named vector or list to a bst
@@ -45,7 +45,7 @@ as.bst.default <- function(x) {
     num_of_vals <- length(x)
     
     # will use names as the keys
-    assertthat::assert_that(num_of_keys == num_of_vals)
+    assert_that(num_of_keys == num_of_vals)
     
     tree <- bst()
     mapply(function(k, v) insert2(tree, k, v), names(x), x)

@@ -20,15 +20,15 @@ ceiling_of <- function(tree, key) UseMethod("ceiling_of")
 #' @importFrom assertthat is.scalar
 #' @export
 ceiling_of.bst <- function(tree, key) {
-    assertthat::assert_that(is.scalar(key) & !is.na(key))
+    assert_that(is.scalar(key) & !is.na(key))
     if (is_empty(tree)) stop("Tree is empty")
-    res = ceiling_of(tree$root, key)
+    res <- ceiling_of(tree$root, key)
     if (is.null(res)) return(NULL)
     else return(res$key)
 }
 
 ceiling_of.bstnode <- function(node, key) {
-    comp = compare(key, node$key)
+    comp <- compare(key, node$key)
     if (comp == 0) return(node)
     if (comp < 0) {
         temp <- ceiling_of(node$left, key)
