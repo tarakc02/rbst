@@ -13,12 +13,12 @@ insert2.bstnode <- function(node, key, value) {
     else if (comp > 0L) node$right <- insert2(node$right, key, value)
     else                node$value <- value
     
-    node$n <- 1 + size(node$left) + size(node$right)
+    node$n <- 1L + size(node$left) + size(node$right)
     node
 }
 
 insert2.NULL <- function(node, key, value) {
-    rbst:::bstnode(key, value, 1)
+    rbst:::bstnode(key, value, 1L)
 }
 
 #' Convert a named vector or list to a bst

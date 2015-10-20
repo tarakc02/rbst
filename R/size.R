@@ -12,7 +12,7 @@ size.bst <- function(tree) size(tree$root)
 size.bstnode <- function(node) {
     node$n
 }
-size.NULL <- function(nada) 0
+size.NULL <- function(nada) 0L
 
 #' Is the tree empty?
 #' 
@@ -20,5 +20,5 @@ size.NULL <- function(nada) 0
 #' 
 #' @export
 is_empty <- function(tree) {
-    size(tree) == 0
+    size(tree) == 0L
 }

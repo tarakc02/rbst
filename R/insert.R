@@ -50,12 +50,12 @@ insert.bstnode <- function(node, key, value) {
         newnode$value <- value
     }
     
-    newnode$n <- 1 + size(newnode$left) + size(newnode$right)
+    newnode$n <- 1L + size(newnode$left) + size(newnode$right)
     newnode    
 }
 
 insert.NULL <- function(node, key, value) {
-    bstnode(key, value, 1)
+    bstnode(key, value, 1L)
 }
 
 #' @rdname insert
