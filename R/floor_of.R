@@ -1,5 +1,4 @@
 #' Get the largest key less than or equal to a given key
-#' @import assertthat
 #' 
 #' @param tree A \code{bst}
 #' @param key The key to use in comparisons
@@ -17,7 +16,8 @@
 #' @export
 floor_of <- function(tree, key) UseMethod("floor_of")
 
-#' @import assertthat
+#' @importFrom assertthat assert_that
+#' @importFrom assertthat is.scalar
 #' @export
 floor_of.bst <- function(tree, key) {
     assertthat::assert_that(is.scalar(key) & !is.na(key))

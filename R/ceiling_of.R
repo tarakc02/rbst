@@ -1,7 +1,5 @@
 #' Get the smallest key greater than or equal to a given key
 #' 
-#' @import assertthat
-#' 
 #' @param tree A \code{bst}
 #' @param key The key to use in comparisons
 #' 
@@ -18,7 +16,8 @@
 #' @export
 ceiling_of <- function(tree, key) UseMethod("ceiling_of")
 
-#' @import assertthat
+#' @importFrom assertthat assert_that
+#' @importFrom assertthat is.scalar
 #' @export
 ceiling_of.bst <- function(tree, key) {
     assertthat::assert_that(is.scalar(key) & !is.na(key))

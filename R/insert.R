@@ -23,7 +23,8 @@
 #' @export
 insert <- function(tree, key, value) UseMethod("insert")
 
-#' @import assertthat
+#' @importFrom assertthat assert_that
+#' @importFrom assertthat is.scalar
 #' @export
 insert.bst <- function(tree, key, value) {
     assertthat::assert_that(is.scalar(key))

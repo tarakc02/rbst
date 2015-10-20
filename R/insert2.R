@@ -35,7 +35,7 @@ insert2.NULL <- function(node, key, value) {
 #' @export
 as.bst <- function(x) UseMethod("as.bst")
 
-#' @import assertthat
+#' @importFrom assertthat assert_that
 #' @export
 as.bst.default <- function(x) {
     if (any(vapply(x, is.null, logical(1))))

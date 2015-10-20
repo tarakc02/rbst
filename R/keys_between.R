@@ -8,7 +8,8 @@
 #' @export
 keys_between <- function(tree, low, high) UseMethod("keys_between")
 
-#' @import assertthat
+#' @importFrom assertthat assert_that
+#' @importFrom assertthat is.scalar
 #' @export
 keys_between.bst <- function(tree, low, high) {
     assert_that(is.scalar(low))

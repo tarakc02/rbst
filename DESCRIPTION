@@ -7,4 +7,5 @@ Depends: R (>= 3.2.2)
 License: MIT + file LICENSE
 LazyData: true
 Maintainer: Tarak Shah <tarak_shah@berkeley.edu>
+Imports: assertthat
 Suggests: testthat
