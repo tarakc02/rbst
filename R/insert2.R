@@ -32,6 +32,8 @@ insert2.NULL <- function(node, key, value) {
 #' and populated from an existing list, so there is no expectation of 
 #' continued access to versions of the tree between inserts, we save a bit of 
 #' time and unnecessary work by inserting without any copying.
+#' 
+#' @param x A named vector or list
 #' @export
 as.bst <- function(x) UseMethod("as.bst")
 

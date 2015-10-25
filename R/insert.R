@@ -60,4 +60,4 @@ insert.NULL <- function(node, key, value) {
 
 #' @rdname insert
 #' @export
-`[<-.bst` <- function(tree, key, value) tree <- insert(tree, key, value)
+`[<-.bst` <- function(tree, key, value) insert(tree, key, value)
