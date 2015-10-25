@@ -5,7 +5,7 @@
 \alias{retrieve}
 \title{Retrieve the value associated with a given key}
 \usage{
-retrieve(tree, key)
+retrieve(tree, key, ...)
 
 \method{[}{bst}(tree, key)
 }
