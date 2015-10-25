@@ -48,9 +48,8 @@ print.bst <- function(tree) {
 
 print.bstnode <- function(node) {
     if (is.null(node)) return()
-    cat(node$key, '-', node$value)
-    if (is.null(node$left) && is.null(node$right)) cat(' (leaf)')
-    cat('\n')
-    if (!is.null(node$left)) print(node$left)
-    if (!is.null(node$right)) print(node$right)    
+    cat(node$key, ':', sep="")
+    str(node$value)
+    if (!is.null(node$left))  print(node$left)
+    if (!is.null(node$right)) print(node$right)
 }
