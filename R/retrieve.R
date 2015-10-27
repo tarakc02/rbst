@@ -31,7 +31,10 @@ retrieve.bstnode <- function(node, key, sentinel) {
     else return(retrieve(node$right, key, node))
 }
 
-retrieve.NULL <- function(node, key, sentinel) sentinel$value
+retrieve.NULL <- function(node, key, sentinel) {
+    if (!is.null(sentinel) && sentinel$key == key) return(sentinel$value)
+    else return(NULL)
+}
 
 #' @rdname retrieve
 #' @export

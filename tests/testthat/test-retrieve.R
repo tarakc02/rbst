@@ -6,6 +6,8 @@ test_that("retrieve works as expected", {
     expect_null(retrieve(tree, "k"))
     tree["k"] <- 4
     expect_equal(tree["k"], 4)
+    expect_null(retrieve(tree, "a"))
+    expect_null(retrieve(tree, "n"))
 })
 
 test_that("retrieve works as expected when multiple trees share nodes", {
