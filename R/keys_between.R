@@ -20,7 +20,7 @@ keys_between.bst <- function(tree, low, high) {
     
     # resizing vector code from Gabor Grothendieck
     # https://stat.ethz.ch/pipermail/r-help/2005-January/063530.html
-    keys <- vector("list")
+    keys <- vector("list", 16)
     keylen <- 0
     
     kb <- function(n, l, h) {
@@ -38,5 +38,6 @@ keys_between.bst <- function(tree, low, high) {
     kb(tree$root, low, high)
     
     # need to remove excess pre-allocated
-    return(keys[!sapply(keys, is.null)])
+    if (keylen == 0) return(list())
+    return(keys[1:keylen])
 }
