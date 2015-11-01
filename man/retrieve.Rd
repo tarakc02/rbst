@@ -13,6 +13,8 @@ retrieve(tree, key, ...)
 \item{tree}{A \code{bst}}
 
 \item{key}{The key to search for}
+
+\item{...}{Ignored}
 }
 \description{
 If the key exists in the tree, \code{retrieve} returns the associated value.

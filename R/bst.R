@@ -1,10 +1,11 @@
-bstnode <- function(key, value, n) {
+bstnode <- function(key, value, n, red) {
     node <- new.env(parent = emptyenv())
     node$key <- key
     node$value <- value
     node$n <- n
     node$left <- NULL
     node$right <- NULL
+    node$red <- red
     class(node) <- "bstnode"
     return(node)
 }

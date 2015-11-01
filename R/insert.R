@@ -33,12 +33,13 @@ insert.bst <- function(tree, key, value) {
     newtree <- bst()
     newtree$root <- tree$root
     newtree$root <- insert(newtree$root, key, value)
+    newtree$root$red <- FALSE
     newtree
 }
 
 insert.bstnode <- function(node, key, value) {
     # make sure that newnode is a copy and not reference to old node
-    newnode <- bstnode(node$key, node$value, node$n)
+    newnode <- bstnode(node$key, node$value, node$n, node$red)
     newnode$left <- node$left
     newnode$right <- node$right
     
@@ -50,12 +51,14 @@ insert.bstnode <- function(node, key, value) {
         newnode$value <- value
     }
     
+    newnode <- balance(newnode)
     newnode$n <- 1L + size(newnode$left) + size(newnode$right)
     newnode    
 }
 
 insert.NULL <- function(node, key, value) {
-    bstnode(key, value, 1L)
+    # new nodes are always red
+    bstnode(key, value, 1L, TRUE)
 }
 
 #' @rdname insert

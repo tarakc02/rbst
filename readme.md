@@ -1,6 +1,6 @@
 rbst
 ===============================================================================
-Inspired by a similar [project by Shawn T. Oneil](https://github.com/oneilsh/rstackdeque), `rbst` is a side-effect free implementation of a binary search tree. That is, you can store and retrieve keys and values relatively quickly (for randomly ordered keys -- currently the implementation is not a balanced tree, so certain inputs will result in worst-case (linear) insert and lookup).
+Inspired by a similar [project by Shawn T. Oneil](https://github.com/oneilsh/rstackdeque), `rbst` is a side-effect free implementation of a binary search tree. That is, you can store and retrieve keys and values quickly (guaranteed logarithmic time for insert and retrieve).
 
 Keys can be of any scalar type that has a meaningful `<` operation defined. For custom key classes, define a `compare` method (see the documentation). Values can be of any type.
 
@@ -17,15 +17,15 @@ The implementation here is heavily based on the one in [Algorithms, 4th Edition 
 > mytree2 <- insert(mytree, "special key", "special value")
 > mytree
 tree of size 3 
-key - value
-another key - another value (leaf)
-yet another - values galore (leaf)
+key: chr "value"
+another key: chr "another value"
+yet another: chr "values galore"
 > mytree2
 tree of size 4 
-key - value
-another key - another value (leaf)
-yet another - values galore
-special key - special value (leaf)
+key: chr "value"
+another key: chr "another value"
+yet another: chr "values galore"
+special key: chr "special value"
 
 ## retrieval methods:
 retrieve(mytree, "key")
@@ -68,4 +68,4 @@ devtools::install_github("tarakc02/rbst")
 
 For the future
 --------------
-This project has a lot of room for improvement. For starters, the unit tests do not cover all types of inputs, so bug reports would be appreciated. I haven't yet done performance testing. I'd also like to write a vignette. Also need to add `min` and `max` type functions to return the smallest or largest key. Beyond that, the underlying implementation should really be a balanced (red-black) search tree, which might  make it easier to include delete operations. If you have any ideas please let me know. 
+This project has a lot of room for improvement. For starters, the unit tests do not cover all types of inputs, so bug reports would be appreciated. I haven't yet done performance testing. I'd also like to write a vignette. Added functionality that would be welcome: delete operations, min and max, and bulk insert/retrieve (ie non-scalar arguments for insert/retrieve)
