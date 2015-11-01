@@ -6,6 +6,7 @@
 #' @export
 height <- function(tree) UseMethod("height")
 
+#' @export
 height.bst <- function(tree) {
     height(tree$root)
 }
