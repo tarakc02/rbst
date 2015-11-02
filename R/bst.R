@@ -1,5 +1,5 @@
 bstnode <- function(key, value, n, red) {
-    node <- new.env(parent = emptyenv())
+    node <- new.env(hash = FALSE, parent = emptyenv())
     node$key <- key
     node$value <- value
     node$n <- n
@@ -35,7 +35,7 @@ bstnode <- function(key, value, n, red) {
 #' retrieve(mytree2, "a") ## 3
 #' @export
 bst <- function() {
-    bst <- new.env(parent = emptyenv())
+    bst <- new.env(hash = FALSE, parent = emptyenv())
     bst$root <- NULL
     class(bst) <- "bst"
     bst
@@ -44,13 +44,15 @@ bst <- function() {
 #' @export
 print.bst <- function(tree) {
     cat("tree of size", size(tree), '\n')
-    if (!is_empty(tree)) print(tree$root)
-}
-
-print.bstnode <- function(node) {
-    if (is.null(node)) return()
-    cat(node$key, ':', sep="")
-    str(node$value)
-    if (!is.null(node$left))  print(node$left)
-    if (!is.null(node$right)) print(node$right)
+    if (is_empty(tree)) return()
+    
+    catnode <- function(node) {
+        if (is.null(node)) return()
+        cat('|  ', node$key, ':', sep="")
+        str(node$value)
+    }
+    catnode(tree$root)
+    catnode(tree$root$left)
+    catnode(tree$root$right)
+    if (size(tree) > 3) cat("|  ...")
 }

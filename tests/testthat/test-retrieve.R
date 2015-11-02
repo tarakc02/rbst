@@ -20,7 +20,21 @@ test_that("retrieve gives correct results on hits and misses", {
     expect_null(retrieve(tree, searchstring))
     results <- vapply(names(x), function(key) retrieve(tree, key), FUN.VALUE = numeric(1))
     diff <- length(setdiff(results, x))
-    expect_equal(diff, 0)
+    expect_equal(diff, 0) 
+    tree2 <- tree
+    y <- structure(
+        rnorm(100),
+        names = replicate(100, paste(sample(letters, 9), collapse =""))
+    )
+    abc <- Map(function(key, value) tree2 <<- insert(tree2, key, value),
+        names(y), y)
+    results2 <- lapply(names(y), function(key) retrieve(tree2, key))
+    results3 <- lapply(names(y), function(key) retrieve(tree, key))
+    expect_true(all(sapply(results3, is.null)))
+    expect_false(any(sapply(results2, is.null)))
+    results_tree2 <- vapply(names(x), function(key) retrieve(tree2, key), FUN.VALUE = numeric(1))
+    results_tree <- vapply(names(x), function(key) retrieve(tree, key), FUN.VALUE = numeric(1))
+    expect_true(all(results_tree == results_tree2))
 })
 
 test_that("retrieve works as expected when multiple trees share nodes", {
