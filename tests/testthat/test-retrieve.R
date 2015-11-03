@@ -12,8 +12,8 @@ test_that("retrieve works as expected", {
 
 test_that("retrieve gives correct results on hits and misses", {
     x <- structure(
-        rnorm(1000),
-        names = replicate(1000, paste(sample(letters, 9), collapse =""))
+        rnorm(100),
+        names = replicate(100, paste(sample(letters, 9), collapse =""))
     )
     tree <- as.bst(x)
     searchstring <- "cdwgh" # can't be a key in x
@@ -23,8 +23,8 @@ test_that("retrieve gives correct results on hits and misses", {
     expect_equal(diff, 0) 
     tree2 <- tree
     y <- structure(
-        rnorm(100),
-        names = replicate(100, paste(sample(letters, 9), collapse =""))
+        rnorm(50),
+        names = replicate(50, paste(sample(letters, 9), collapse =""))
     )
     abc <- Map(function(key, value) tree2 <<- insert(tree2, key, value),
         names(y), y)

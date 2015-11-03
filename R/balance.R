@@ -1,4 +1,11 @@
 balance <- function(newnode) {
+    # if two red children occured not as the result of a rotation,
+    # (which violates left-leaning invariant) then 
+    # need to flip colors, but left child was not on search path,
+    # so need to make a copy of it before modifying 
+    if (is_red(newnode$left) && is_red(newnode$right))
+        newnode <- flipcopy(newnode)
+    
     # ensure red links always lean left
     if (is_red(newnode$right) && !is_red(newnode$left)) 
         newnode <- rotate_left(newnode)
