@@ -20,8 +20,8 @@ test_that("keys_between", {
 
 test_that("keys_between gives same results as manual search", {
     dummy <- structure(
-        rnorm(1000),
-        names = replicate(1000, paste(sample(letters, 9), collapse =""))
+        rnorm(100),
+        names = replicate(100, paste(sample(letters, 9), collapse =""))
     )
     
     dummytree <- as.bst(dummy)

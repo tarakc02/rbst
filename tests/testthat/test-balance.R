@@ -1,0 +1,79 @@
+library(rbst)
+context("bst maintains balance")
+
+test_that("balance maintained through insertions in increasing order", {
+    tree <- bst()
+    tree1 <- insert(tree, 1, 1)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1))
+    
+    tree2 <- insert(tree1, 2, 2)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1)) 
+    expect_true(is_balanced(tree2))
+    
+    tree3 <- insert(tree2, 3, 3)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1))
+    expect_true(is_balanced(tree2)) 
+    expect_true(is_balanced(tree3))
+    
+    tree4 <- insert(tree3, 4, 4)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1))
+    expect_true(is_balanced(tree2))
+    expect_true(is_balanced(tree3))
+    expect_true(is_balanced(tree4))
+    
+    tree5 <- insert(tree3, 5, 5)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1))
+    expect_true(is_balanced(tree2))
+    expect_true(is_balanced(tree3))
+    expect_true(is_balanced(tree4))
+    expect_true(is_balanced(tree5))
+})
+
+test_that("balance maintained through insertions in decreasing order", {
+    tree <- bst()
+    tree1 <- insert(tree, 5, 5)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1))
+    
+    tree2 <- insert(tree1, 4, 4)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1)) 
+    expect_true(is_balanced(tree2))
+    
+    tree3 <- insert(tree2, 3, 3)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1))
+    expect_true(is_balanced(tree2)) 
+    expect_true(is_balanced(tree3))
+    
+    tree4 <- insert(tree3, 2, 2)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1))
+    expect_true(is_balanced(tree2))
+    expect_true(is_balanced(tree3))
+    expect_true(is_balanced(tree4))
+    
+    tree5 <- insert(tree3, 1, 1)
+    expect_true(is_balanced(tree))
+    expect_true(is_balanced(tree1))
+    expect_true(is_balanced(tree2))
+    expect_true(is_balanced(tree3))
+    expect_true(is_balanced(tree4))
+    expect_true(is_balanced(tree5))
+})
+
+test_that("balance maintained through random insertions", {
+    tree <- bst()
+    tree_list <- vector("list", 11)
+    keys <- sample(10)
+    tree_list[[1]] <- tree
+    for (i in 2:11) {
+        tree_list[[i]] <- insert(tree_list[[i-1]], keys[i-1], keys[i-1])
+        for (t in 1:i) expect_true(is_balanced(tree_list[[t]]))
+    }
+})

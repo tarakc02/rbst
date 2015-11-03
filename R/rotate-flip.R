@@ -11,6 +11,18 @@ flip <- function(node) {
     node$right$red <- FALSE
 }
 
+flipcopy <- function(node) {
+    # re-color nodes, but copy the left child
+    node$red <- TRUE
+    x <- node$left
+    newleft <- bstnode(x$key, x$value, x$n, FALSE)
+    newleft$left <- x$left
+    newleft$right <- x$right
+    node$left <- newleft
+    node$right$red <- FALSE
+    node
+}
+
 rotate_left <- function(node) {
     x <- node$right
     node$right <- x$left
