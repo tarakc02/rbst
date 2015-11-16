@@ -8,4 +8,6 @@ License: MIT + file LICENSE
 LazyData: true
 Maintainer: Tarak Shah <tarak_shah@berkeley.edu>
 Imports: assertthat
-Suggests: testthat
+Suggests: testthat,
+    knitr
+VignetteBuilder: knitr

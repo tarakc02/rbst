@@ -4,7 +4,12 @@
 \alias{bst}
 \title{Create a new binary search tree}
 \usage{
-bst()
+bst(keys = NULL, values = NULL)
+}
+\arguments{
+\item{keys}{(optional) keys to initially insert into the tree}
+
+\item{values}{(optional) values should be the same length as \code{keys}}
 }
 \description{
 Creates a new, empty, binary search tree. A \code{bst} stores keys and

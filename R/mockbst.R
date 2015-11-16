@@ -6,17 +6,14 @@
 #' @importFrom assertthat assert_that
 #' @importFrom assertthat is.count
 #' @export
-mockbst <- function(nodes, data_size, key_type = "string") {
+mockbst <- function(nodes, data_size = 1, key_type = "string") {
     assertthat::assert_that(assertthat::is.count(nodes))
     assertthat::assert_that(assertthat::is.count(data_size))
     assertthat::assert_that(assertthat::is.string(key_type))
-    tree <- bst()
-    for (node in 1:nodes) {
-        if (key_type == "string")
-            key <- paste(sample(c(letters, LETTERS), 9), collapse="")
-        else stop("key_type not supported")
-        value <- rnorm(data_size)
-        tree <- insert(tree, key, value)
-    }
-    tree
+    if (key_type == "string")
+        key <- replicate(nodes, paste(sample(c(letters, LETTERS), 9), collapse=""))
+    else stop("key_type not supported")
+    
+    value <- replicate(nodes, rnorm(data_size), simplify = FALSE)
+    bst(key, value)
 }

@@ -4,7 +4,7 @@
 \alias{mockbst}
 \title{Create a mock bst object for testing and analysis}
 \usage{
-mockbst(nodes, data_size, key_type = "string")
+mockbst(nodes, data_size = 1, key_type = "string")
 }
 \arguments{
 \item{nodes}{Size of the tree}

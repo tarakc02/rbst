@@ -8,7 +8,7 @@ height <- function(tree) UseMethod("height")
 
 #' @export
 height.bst <- function(tree) {
-    height(tree$root)
+    height(tree$root) + 1L
 }
 
 height.bstnode <- function(node) {

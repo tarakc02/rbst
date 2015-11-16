@@ -34,16 +34,5 @@ as.bst <- function(x) UseMethod("as.bst")
 #' @importFrom assertthat assert_that
 #' @export
 as.bst.default <- function(x) {
-    if (any(vapply(x, is.null, logical(1))))
-        stop("Can't insert NULL values")
-    if (any(is.na(names(x)))) stop("Keys can not be NA")
-    num_of_keys <- length(names(x))
-    num_of_vals <- length(x)
-    
-    # will use names as the keys
-    assert_that(num_of_keys == num_of_vals)
-    
-    tree <- bst()
-    mapply(function(k, v) insert2(tree, k, v), names(x), x)
-    tree
+    bst(names(x), x)
 }

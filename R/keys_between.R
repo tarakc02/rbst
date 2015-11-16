@@ -41,3 +41,11 @@ keys_between.bst <- function(tree, low, high) {
     if (keylen == 0) return(list())
     return(keys[1:keylen])
 }
+
+#' Get all keys (in order)
+#' 
+#' @param tree A \code{bst}
+#' @export
+keys <- function(tree) {
+    keys_between(tree, min_key(tree), max_key(tree))
+}
