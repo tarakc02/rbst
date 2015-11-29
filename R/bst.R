@@ -18,9 +18,9 @@ bstnode <- function(key, value, n, red) {
 #' 
 #' @param keys (optional) keys to initially insert into the tree
 #' @param values (optional) values should be the same length as \code{keys}
+#' @param compare The comparator that the tree should use for ordering
 #' 
-#' @details the key can be any type for which there is a \link{compare} method 
-#' defined. By default, \link{compare} will use \code{<}, so is defined for 
+#' @details The default comparator will use \code{<}, so is defined for 
 #' any types with which you can use \code{<}.
 #' 
 #' Note that there is no checking for consistency of keys. 
@@ -38,10 +38,11 @@ bstnode <- function(key, value, n, red) {
 #' retrieve(mytree2, "a") ## 3
 #' @importFrom assertthat assert_that
 #' @export
-bst <- function(keys = NULL, values = NULL) {
+bst <- function(keys = NULL, values = NULL, compare = compare_default) {
     assertthat::assert_that(length(keys) == length(values))
     bst <- new.env(hash = FALSE, parent = emptyenv())
     bst$root <- NULL
+    bst$compare <- compare
     class(bst) <- "bst"
     if (length(keys) == 0) return(bst)
     

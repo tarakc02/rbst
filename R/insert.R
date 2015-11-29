@@ -6,6 +6,7 @@
 #' @param tree A \code{bst}
 #' @param key The key to insert
 #' @param value The value to insert
+#' @param ... Other arguments (not used)
 #' 
 #' @examples
 #' mytree <- bst()
@@ -21,7 +22,7 @@
 #' # or use [
 #' mytree["q"] <- 15
 #' @export
-insert <- function(tree, key, value) UseMethod("insert")
+insert <- function(tree, key, value, ...) UseMethod("insert")
 
 #' @importFrom assertthat assert_that
 #' @importFrom assertthat is.scalar
@@ -32,20 +33,21 @@ insert.bst <- function(tree, key, value) {
     assert_that(!is.na(key))
     newtree <- bst()
     newtree$root <- tree$root
-    newtree$root <- insert(newtree$root, key, value)
+    newtree$compare <- tree$compare
+    newtree$root <- insert(newtree$root, key, value, newtree$compare)
     newtree$root$red <- FALSE
     newtree
 }
 
-insert.bstnode <- function(node, key, value) {
+insert.bstnode <- function(node, key, value, compare) {
     # make sure that newnode is a copy and not reference to old node
     newnode <- bstnode(node$key, node$value, node$n, node$red)
     newnode$left <- node$left
     newnode$right <- node$right
     
     comp <- compare(key, newnode$key)
-    if (comp < 0L)      newnode$left  <- insert(newnode$left,  key, value)
-    else if (comp > 0L) newnode$right <- insert(newnode$right, key, value)
+    if (comp < 0L)      newnode$left  <- insert(newnode$left,  key, value, compare)
+    else if (comp > 0L) newnode$right <- insert(newnode$right, key, value, compare)
     else {
         warning("Overwriting previous value")
         newnode$value <- value
@@ -56,7 +58,7 @@ insert.bstnode <- function(node, key, value) {
     newnode    
 }
 
-insert.NULL <- function(node, key, value) {
+insert.NULL <- function(node, key, value, compare) {
     # new nodes are always red
     bstnode(key, value, 1L, TRUE)
 }

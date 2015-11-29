@@ -1,0 +1,40 @@
+---
+title: "Introduction to rbst"
+author: "Tarak Shah"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to rbst}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+### Background
+
+`rbst` is a purely functional implementation of a balanced search tree. In addition to the normal advantages of a balanced search tree (guaranteed fast retrieval and insertion of new key-value pairs, ordered search operations), `rbst` also has the (natural in `R`) quality of non-destructive updates. 
+
+```{r examples}
+library(rbst)
+example <- bst(keys = letters, values = seq_along(letters))
+example
+
+# retrieval:
+example["t"]
+
+# ordered search for keys:
+keys_between(example, "f", "i")
+
+# non-destructive insertions:
+modified_example <- insert(example, "new key", 97)
+contains(modified_example, "new key")
+contains(example, "new key")
+```
+
+-----
+
+### References
+
+Okaski, Chris. *Purely Functional Data Structures.* Cambridge University Press, 1999.
+
+O'Neil, Shawn T. "Implementing Persistent O(1) Stacks and Queues in R." *The R Journal* Volume 7/1 (June 2015).
+
+Sedgewick, Robert and Kevin Wayne. *Algorithms, 4th Edition.* Addison Wesley Professional, 2011.

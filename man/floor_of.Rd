@@ -4,12 +4,14 @@
 \alias{floor_of}
 \title{Get the largest key less than or equal to a given key}
 \usage{
-floor_of(tree, key)
+floor_of(tree, key, ...)
 }
 \arguments{
 \item{tree}{A \code{bst}}
 
 \item{key}{The key to use in comparisons}
+
+\item{...}{Other arguments (not used)}
 }
 \description{
 Get the largest key less than or equal to a given key

@@ -1,3 +1,8 @@
+#' Is the tree balanced?
+#' 
+#' Used for checking and de-bugging only
+#' 
+#' @param tree A \code{bst}
 #' @export
 is_balanced <- function(tree, ...) UseMethod("is_balanced")
 

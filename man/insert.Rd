@@ -5,7 +5,7 @@
 \alias{insert}
 \title{Insert a key-value pair into a bst}
 \usage{
-insert(tree, key, value)
+insert(tree, key, value, ...)
 
 \method{[}{bst}(tree, key) <- value
 }
@@ -15,6 +15,8 @@ insert(tree, key, value)
 \item{key}{The key to insert}
 
 \item{value}{The value to insert}
+
+\item{...}{Other arguments (not used)}
 }
 \description{
 If the given key is already present in the tree, the associated value will

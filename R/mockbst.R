@@ -15,5 +15,5 @@ mockbst <- function(nodes, data_size = 1, key_type = "string") {
     else stop("key_type not supported")
     
     value <- replicate(nodes, rnorm(data_size), simplify = FALSE)
-    bst(key, value)
+    bst(key, value, compare_default)
 }

@@ -22,17 +22,18 @@ retrieve <- function(tree, key, ...) UseMethod("retrieve")
 retrieve.bst <- function(tree, key) {
     assert_that(is.scalar(key))
     assert_that(!is.na(key))
-    retrieve(tree$root, key, NULL)
+    retrieve(tree$root, key, NULL, tree$compare)
 }
 
-retrieve.bstnode <- function(node, key, sentinel) {
+retrieve.bstnode <- function(node, key, sentinel, compare) {
     x <- compare(key, node$key)
-    if (x < 0)      return(retrieve(node$left, key, sentinel))
-    else return(retrieve(node$right, key, node))
+    if (x < 0)      return(retrieve(node$left, key, sentinel, compare))
+    else return(retrieve(node$right, key, node, compare))
 }
 
-retrieve.NULL <- function(node, key, sentinel) {
-    if (!is.null(sentinel) && sentinel$key == key) return(sentinel$value)
+retrieve.NULL <- function(node, key, sentinel, compare) {
+    if (!is.null(sentinel) && compare(sentinel$key, key) == 0L)
+        return(sentinel$value)
     else return(NULL)
 }
 

@@ -4,12 +4,14 @@
 \alias{bst}
 \title{Create a new binary search tree}
 \usage{
-bst(keys = NULL, values = NULL)
+bst(keys = NULL, values = NULL, compare = compare_default)
 }
 \arguments{
 \item{keys}{(optional) keys to initially insert into the tree}
 
 \item{values}{(optional) values should be the same length as \code{keys}}
+
+\item{compare}{The comparator that the tree should use for ordering}
 }
 \description{
 Creates a new, empty, binary search tree. A \code{bst} stores keys and
@@ -17,8 +19,7 @@ values. You can \link{insert} new key-value pairs in, and you can
 \link{retrieve} values out by providing a key.
 }
 \details{
-the key can be any type for which there is a \link{compare} method
-defined. By default, \link{compare} will use \code{<}, so is defined for
+The default comparator will use \code{<}, so is defined for
 any types with which you can use \code{<}.
 
 Note that there is no checking for consistency of keys.

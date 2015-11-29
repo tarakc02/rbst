@@ -4,10 +4,12 @@
 \alias{as.bst}
 \title{Convert a named vector or list to a bst}
 \usage{
-as.bst(x)
+as.bst(x, compare)
 }
 \arguments{
 \item{x}{A named vector or list}
+
+\item{compare}{The comparator function}
 }
 \description{
 Convenience function to quickly populate a bst, given a named list/vector.

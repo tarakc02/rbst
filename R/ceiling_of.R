@@ -2,6 +2,7 @@
 #' 
 #' @param tree A \code{bst}
 #' @param key The key to use in comparisons
+#' @param ... Other arguments (not used)
 #' 
 #' @details If the key exists in the tree, then it is returned. If the key is 
 #' larger than the largest key in the tree, then \code{NULL} is returned. 
@@ -14,7 +15,7 @@
 #' retrieve(mytree, ceiling_of(mytree, 2))
 #' retrieve(mytree, floor_of(mytree, 3))
 #' @export
-ceiling_of <- function(tree, key) UseMethod("ceiling_of")
+ceiling_of <- function(tree, key, ...) UseMethod("ceiling_of")
 
 #' @importFrom assertthat assert_that
 #' @importFrom assertthat is.scalar
@@ -22,20 +23,20 @@ ceiling_of <- function(tree, key) UseMethod("ceiling_of")
 ceiling_of.bst <- function(tree, key) {
     assert_that(is.scalar(key) & !is.na(key))
     if (is_empty(tree)) stop("Tree is empty")
-    res <- ceiling_of(tree$root, key)
+    res <- ceiling_of(tree$root, key, tree$compare)
     if (is.null(res)) return(NULL)
     else return(res$key)
 }
 
-ceiling_of.bstnode <- function(node, key) {
+ceiling_of.bstnode <- function(node, key, compare) {
     comp <- compare(key, node$key)
     if (comp == 0) return(node)
     if (comp < 0) {
-        temp <- ceiling_of(node$left, key)
+        temp <- ceiling_of(node$left, key, compare)
         if (!is.null(temp)) return(temp)
         else return(node)
     }
-    ceiling_of(node$right, key)
+    ceiling_of(node$right, key, compare)
 }
 
-ceiling_of.NULL <- function(node, key) NULL
+ceiling_of.NULL <- function(node, key, compare) NULL

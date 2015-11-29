@@ -4,12 +4,14 @@
 \alias{ceiling_of}
 \title{Get the smallest key greater than or equal to a given key}
 \usage{
-ceiling_of(tree, key)
+ceiling_of(tree, key, ...)
 }
 \arguments{
 \item{tree}{A \code{bst}}
 
 \item{key}{The key to use in comparisons}
+
+\item{...}{Other arguments (not used)}
 }
 \description{
 Get the smallest key greater than or equal to a given key
