@@ -31,9 +31,7 @@ insert.bst <- function(tree, key, value) {
     assert_that(is.scalar(key))
     assert_that(!is.null(value))
     assert_that(!is.na(key))
-    newtree <- bst()
-    newtree$root <- tree$root
-    newtree$compare <- tree$compare
+    newtree <- copy_tree(tree)
     newtree$root <- insert(newtree$root, key, value, newtree$compare)
     newtree$root$red <- FALSE
     newtree
@@ -41,10 +39,8 @@ insert.bst <- function(tree, key, value) {
 
 insert.bstnode <- function(node, key, value, compare) {
     # make sure that newnode is a copy and not reference to old node
-    newnode <- bstnode(node$key, node$value, node$n, node$red)
-    newnode$left <- node$left
-    newnode$right <- node$right
-    
+    newnode <- copy_node(node)
+
     comp <- compare(key, newnode$key)
     if (comp < 0L)      newnode$left  <- insert(newnode$left,  key, value, compare)
     else if (comp > 0L) newnode$right <- insert(newnode$right, key, value, compare)
@@ -54,7 +50,8 @@ insert.bstnode <- function(node, key, value, compare) {
     }
     
     newnode <- balance(newnode)
-    newnode$n <- 1L + size(newnode$left) + size(newnode$right)
+    #newnode$n <- 1L + size(newnode$left) + size(newnode$right)
+    update_size(newnode)
     newnode    
 }
 

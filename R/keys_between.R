@@ -12,12 +12,13 @@ keys_between <- function(tree, low, high) UseMethod("keys_between")
 #' @importFrom assertthat is.scalar
 #' @export
 keys_between.bst <- function(tree, low, high) {
+    if (is_empty(tree)) return(list())
     compare <- tree$compare
     assert_that(is.scalar(low))
     assert_that(is.scalar(high))
     assert_that(!is.na(low))
     assert_that(!is.na(high))
-    assert_that(compare(high, low) > 0)
+    assert_that(compare(high, low) >= 0)
     
     # resizing vector code from Gabor Grothendieck
     # https://stat.ethz.ch/pipermail/r-help/2005-January/063530.html

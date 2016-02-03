@@ -10,7 +10,7 @@ vignette: >
 ---
 ### Background
 
-`rbst` is a purely functional implementation of a balanced search tree. In addition to the normal advantages of a balanced search tree (guaranteed fast retrieval and insertion of new key-value pairs, ordered search operations), `rbst` also has the (natural in `R`) quality of non-destructive updates. 
+`rbst` is a purely functional implementation of a balanced search tree. In addition to the normal advantages of a balanced search tree (guaranteed fast retrieval, deletion, and insertion of new key-value pairs, ordered search operations), `rbst` also has the (natural in `R`) quality of non-destructive updates. 
 
 ```{r examples}
 library(rbst)
@@ -29,12 +29,24 @@ contains(modified_example, "new key")
 contains(example, "new key")
 ```
 
+`delete` functions also allow for priority queue-like behavior:
+
+```{r delmin}
+example <- delete_min(example)
+contains(example, "a")
+example <- delete_min(example)
+contains(example, "a")
+contains(example, "b")
+```
+
 -----
 
 ### References
 
-Okaski, Chris. *Purely Functional Data Structures.* Cambridge University Press, 1999.
+Okasaki, Chris. *Purely Functional Data Structures.* Cambridge University Press, 1999.
 
 O'Neil, Shawn T. "Implementing Persistent O(1) Stacks and Queues in R." *The R Journal* Volume 7/1 (June 2015).
+
+Oster, Julien. "An Agda implementation of deletion in Left-leaning Red-Black trees." http://www.reinference.net/llrb-delete-julien-oster.pdf
 
 Sedgewick, Robert and Kevin Wayne. *Algorithms, 4th Edition.* Addison Wesley Professional, 2011.

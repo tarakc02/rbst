@@ -1,13 +1,17 @@
 Package: rbst
 Title: Persistent binary search trees in R
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Authors@R: person("Tarak", "Shah", email = "tarak_shah@berkeley.edu", role = c("aut", "cre"))
 Description: Side-effect free implmentation of a binary search tree
-Depends: R (>= 3.2.2)
+Depends:
+    R (>= 3.2.2)
 License: MIT + file LICENSE
 LazyData: true
 Maintainer: Tarak Shah <tarak_shah@berkeley.edu>
-Imports: assertthat
-Suggests: testthat,
+Imports:
+    assertthat
+Suggests:
+    testthat,
     knitr
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1

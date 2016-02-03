@@ -30,7 +30,7 @@ rotate_left <- function(node) {
     x$red <- node$red
     node$red <- TRUE
     x$n <- node$n
-    node$n <- 1L + size(node$left) + size(node$right)
+    update_size(node)
     x
 }
 
@@ -41,6 +41,6 @@ rotate_right <- function(node) {
     x$red <- node$red
     node$red <- TRUE
     x$n <- node$n
-    node$n <- 1L + size(node$left) + size(node$right)
+    update_size(node)
     x
 }
