@@ -143,17 +143,12 @@ delete_black <- function(node, key, compare) {
         d$right <- h
         c <- copy_node(node$left$right)
         b <- copy_node(node$left)
-        a <- copy_node(b$left)
-        a$red <- TRUE
-        b$red <- FALSE
-        b$left <- a
-        b$right <- c$left
-        c$left <- b
-        update_size(b)
-        d$left <- c$right
-        c$right <- d
+        c$red <- TRUE
+        d$left <- c
+        b$right <- d
         update_size(d)
-        update_size(c)
-        return(list(res = c, decrement = FALSE))
+        update_size(b)
+        b$red <- FALSE
+        return(list(res = b, decrement = FALSE))
     }
 }

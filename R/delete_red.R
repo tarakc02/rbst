@@ -254,7 +254,7 @@ delete_red <- function(node, key, compare) {
         d$left <- node$left$right
         d$right <- node$right$left
         d <- delete_red(d, key, compare)
-        if (d$red) {
+        if (is_red(d)) {
             b <- copy_node(node$left)
             f <- copy_node(node$right)
             b$right <- d$left
